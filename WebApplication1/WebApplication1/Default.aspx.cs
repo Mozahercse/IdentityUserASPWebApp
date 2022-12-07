@@ -1,0 +1,25 @@
+﻿using Microsoft.AspNet.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class _Default : Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (!string.IsNullOrEmpty(Context.User.Identity.GetUserName()))
+                {
+                    title.InnerHtml = "Welcome!";
+                    userName.InnerHtml = Context.User.Identity.GetUserName();
+                }
+            }
+        }
+    }
+}
